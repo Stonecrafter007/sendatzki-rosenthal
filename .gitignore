@@ -1,0 +1,11 @@
+# Referenz-/Arbeitsdateien, die nicht zur Website gehören
+screencapture-newgenre-studio-*.pdf
+CLAUDEwebdesign copy.md
+
+# Lokale, maschinenspezifische Claude-Einstellungen
+.claude/settings.local.json
+
+# OS / Editor
+Thumbs.db
+Desktop.ini
+.DS_Store

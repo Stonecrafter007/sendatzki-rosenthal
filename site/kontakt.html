@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontakt — Sendatzki + Rosenthal Autoteile und Lacke</title>
+  <meta name="description" content="Kontakt zu Sendatzki + Rosenthal: Kontaktformular, Telefon und E-Mail für Teileanfragen, Farbtöne und Werkstattbedarf.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/logo_sr.png">
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="index.html" aria-label="Sendatzki + Rosenthal — zur Startseite">
+      <img src="assets/logo_sr.png" alt="S+R Logo" width="46" height="25">
+      <span class="brand-name">Sendatzki&nbsp;+&nbsp;Rosenthal</span>
+    </a>
+    <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
+      <a href="index.html">Start</a>
+      <a href="leistungen.html">Leistungen</a>
+      <a href="team.html">Team</a>
+      <a href="ueber-uns.html">Über uns</a>
+      <a href="standorte.html">Standorte</a>
+      <a href="kontakt.html" aria-current="page">Kontakt</a>
+      <span class="nav-rule" aria-hidden="true"></span>
+      <a class="nav-icon" href="https://www.instagram.com/autula/" rel="noopener" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="nav-icon" href="https://www.facebook.com/Autoteile.und.Lacke/" rel="noopener" target="_blank" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.6l.4-3h-3V9.1c0-.9.3-1.5 1.6-1.5h1.5V4.9c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8V11H8v3h2.7v7h2.8Z"/></svg>
+      </a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      Menü
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-head">
+    <div class="wrap">
+      <h1 class="page-title">Teil gesucht, Farbton gebraucht, Frage offen?</h1>
+      <p class="page-sub">Schreiben Sie uns über das Formular — je genauer Fahrzeug und Teil oder Farbcode, desto schneller haben wir eine Antwort. Lieber telefonisch? Die Nummern stehen daneben.</p>
+    </div>
+  </section>
+
+  <section class="page-body">
+    <div class="wrap contact-layout">
+
+      <aside class="contact-aside reveal">
+        <h2>Direkt erreichen</h2>
+        <p>
+          <a href="tel:+49209800050">0209 8 00 05-0</a><br>
+          <a href="mailto:info@autoteile-und-lacke.de">info@autoteile-und-lacke.de</a>
+        </p>
+        <h2>Hauptsitz</h2>
+        <address>
+          Sendatzki + Rosenthal<br>
+          Alfred-Zingler-Straße 38<br>
+          45881 Gelsenkirchen
+        </address>
+        <h2>Öffnungszeiten</h2>
+        <p>
+          Montag – Freitag 8–17:30 Uhr<br>
+          Samstag 9–13 Uhr
+        </p>
+      </aside>
+
+      <!-- Das Formular funktioniert clientseitig: nach Prüfung öffnet sich eine
+           vorausgefüllte E-Mail an info@autoteile-und-lacke.de.
+           TODO: Für serverseitigen Versand data-endpoint auf eine Formular-URL
+           (z. B. Formspree) setzen; das Skript nutzt dann fetch() statt mailto. -->
+      <form class="form reveal" id="contact-form" novalidate
+            data-endpoint=""
+            data-mailto="info@autoteile-und-lacke.de">
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input type="text" id="cf-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="cf-company">Betrieb <small>(optional)</small></label>
+          <input type="text" id="cf-company" name="betrieb" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="cf-email">E-Mail</label>
+          <input type="email" id="cf-email" name="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="cf-phone">Telefon <small>(optional)</small></label>
+          <input type="tel" id="cf-phone" name="telefon" autocomplete="tel">
+        </div>
+        <div class="field field-full">
+          <label for="cf-topic">Anliegen</label>
+          <select id="cf-topic" name="anliegen">
+            <option>Teileanfrage</option>
+            <option>Farbton / Lack</option>
+            <option>Werkstattausrüstung</option>
+            <option>Schulung</option>
+            <option>Sonstiges</option>
+          </select>
+        </div>
+        <div class="field field-full">
+          <label for="cf-message">Nachricht <small>(Fahrzeug, Fahrgestellnummer oder Farbcode hilft uns)</small></label>
+          <textarea id="cf-message" name="nachricht" required></textarea>
+        </div>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        <div class="form-foot">
+          <button type="submit" class="btn-submit">Nachricht senden</button>
+          <p class="form-note">Mit dem Absenden öffnet sich Ihr E-Mail-Programm mit der fertig vorbereiteten Nachricht. Ihre Angaben nutzen wir ausschließlich zur Bearbeitung Ihrer Anfrage.</p>
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+  <section class="outro outro--compact">
+    <div class="wrap outro-line-wrap">
+      <p class="outro-line"><span class="outro-strong">Vom Kleinteil</span> <span class="outro-soft">bis zum Klarlack.</span></p>
+    </div>
+    <footer class="site-foot">
+      <div class="wrap">
+        <a class="foot-cta" href="standorte.html">Alle Standorte ansehen&nbsp;<span aria-hidden="true">→</span></a>
+        <div class="foot-cols">
+          <div class="foot-col">
+            <h3>Gelsenkirchen</h3>
+            <p class="foot-time" id="clock" aria-hidden="true"></p>
+            <address>
+              Alfred-Zingler-Straße 38<br>
+              45881 Gelsenkirchen<br>
+              <a href="tel:+49209800050">0209 8 00 05-0</a>
+            </address>
+          </div>
+          <div class="foot-col">
+            <h3>Wuppertal &amp; Velbert</h3>
+            <p class="foot-time">Weitere Standorte</p>
+            <address>
+              Küllenhahner Straße 55, Wuppertal<br>
+              Friedrichstraße 303, Velbert<br>
+              <a href="standorte.html">Alle Standorte →</a>
+            </address>
+          </div>
+          <div class="foot-col">
+            <h3>Öffnungszeiten</h3>
+            <p class="foot-time">Theke &amp; Lager</p>
+            <p>
+              Montag – Freitag 8–17:30 Uhr<br>
+              Samstag 9–13 Uhr<br>
+              <a href="mailto:info@autoteile-und-lacke.de">info@autoteile-und-lacke.de</a>
+            </p>
+          </div>
+        </div>
+        <div class="foot-meta">
+          <img class="foot-logo" src="assets/logo_sr.png" alt="" width="46" height="25">
+          <nav class="foot-links" aria-label="Rechtliches">
+            <a href="#">Impressum</a>
+            <a href="#">Datenschutz</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+    <div class="outro-close">
+      <p class="wrap copyright">© 2026 Sendatzki + Rosenthal Autoteile und Lacke GmbH &amp; Co. KG</p>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -28,6 +28,80 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 30000);
 
+// Live-Öffnungsstatus der Standorte (Ampel grün/gelb/rot)
+// Öffnungszeiten in Minuten seit Mitternacht, Index = Wochentag (0 = So … 6 = Sa)
+var OPENING_HOURS = {
+  0: null,          // Sonntag geschlossen
+  1: [480, 1050],   // Mo  8:00–17:30
+  2: [480, 1050],
+  3: [480, 1050],
+  4: [480, 1050],
+  5: [480, 1050],
+  6: [540, 780]     // Sa  9:00–13:00
+};
+var WEEKDAYS = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+
+function fmtTime(mins) {
+  var h = Math.floor(mins / 60);
+  var m = mins % 60;
+  return h + ':' + (m < 10 ? '0' + m : m);
+}
+
+function nextOpening(day, mins) {
+  // Nächste Öffnung ab jetzt suchen (bis zu 7 Tage voraus)
+  for (var i = 0; i < 8; i++) {
+    var d = (day + i) % 7;
+    var range = OPENING_HOURS[d];
+    if (!range) continue;
+    if (i === 0 && mins >= range[0]) continue; // heute schon nach Öffnung
+    var label = i === 0 ? 'heute' : (i === 1 ? 'morgen' : WEEKDAYS[d]);
+    return label + ' ' + fmtTime(range[0]) + ' Uhr';
+  }
+  return null;
+}
+
+function openingStatus() {
+  // Aktuelle Zeit in Europe/Berlin (DST-sicher über toLocaleString)
+  var berlin = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Berlin' }));
+  var day = berlin.getDay();
+  var mins = berlin.getHours() * 60 + berlin.getMinutes();
+  var range = OPENING_HOURS[day];
+
+  if (range && mins >= range[0] && mins < range[1]) {
+    var remaining = range[1] - mins;
+    if (remaining <= 30) {
+      return { state: 'is-soon', text: 'Schließt in ' + remaining + ' Min' };
+    }
+    return { state: 'is-open', text: 'Jetzt geöffnet · bis ' + fmtTime(range[1]) + ' Uhr' };
+  }
+
+  // Geschlossen — öffnet es heute noch?
+  if (range && mins < range[0]) {
+    var until = range[0] - mins;
+    if (until <= 60) {
+      return { state: 'is-soon', text: 'Öffnet in ' + until + ' Min' };
+    }
+  }
+
+  var next = nextOpening(day, mins);
+  return { state: 'is-closed', text: next ? 'Geschlossen · öffnet ' + next : 'Geschlossen' };
+}
+
+function updateLocationStatus() {
+  var badges = document.querySelectorAll('.loc-status');
+  if (!badges.length) return;
+  var s = openingStatus();
+  badges.forEach(function (badge) {
+    badge.classList.remove('is-open', 'is-soon', 'is-closed');
+    badge.classList.add(s.state);
+    var text = badge.querySelector('.loc-status-text');
+    if (text) text.textContent = s.text;
+  });
+}
+
+updateLocationStatus();
+setInterval(updateLocationStatus, 60000);
+
 // Scroll-Reveal (respektiert prefers-reduced-motion via CSS)
 var observer = new IntersectionObserver(function (entries) {
   entries.forEach(function (entry) {

@@ -32,12 +32,12 @@ setInterval(updateClock, 30000);
 // Öffnungszeiten in Minuten seit Mitternacht, Index = Wochentag (0 = So … 6 = Sa)
 var OPENING_HOURS = {
   0: null,          // Sonntag geschlossen
-  1: [480, 1050],   // Mo  8:00–17:30
+  1: [480, 1050],   // Mo  8:00 bis 17:30
   2: [480, 1050],
   3: [480, 1050],
   4: [480, 1050],
   5: [480, 1050],
-  6: [540, 780]     // Sa  9:00–13:00
+  6: [540, 780]     // Sa  9:00 bis 13:00
 };
 var WEEKDAYS = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
 
@@ -75,7 +75,7 @@ function openingStatus() {
     return { state: 'is-open', text: 'Jetzt geöffnet · bis ' + fmtTime(range[1]) + ' Uhr' };
   }
 
-  // Geschlossen — öffnet es heute noch?
+  // Geschlossen, öffnet es heute noch?
   if (range && mins < range[0]) {
     var until = range[0] - mins;
     if (until <= 60) {
@@ -173,7 +173,7 @@ if (form) {
     function done() {
       form.reset();
       statusEl.style.color = '#3b6331';
-      statusEl.textContent = 'Danke! Ihre Anfrage ist unterwegs — wir melden uns zeitnah zurück.';
+      statusEl.textContent = 'Danke! Ihre Anfrage ist unterwegs, wir melden uns zeitnah zurück.';
     }
 
     // Serverseitiger Versand, falls ein Endpoint hinterlegt ist
@@ -197,7 +197,7 @@ if (form) {
     var lines = Object.keys(data).filter(function (k) { return data[k]; })
       .map(function (k) { return k + ': ' + data[k]; });
     var mail = form.getAttribute('data-mailto');
-    var subject = 'Anfrage über die Website — ' + data.Anliegen;
+    var subject = 'Anfrage über die Website: ' + data.Anliegen;
     var href = 'mailto:' + mail +
       '?subject=' + encodeURIComponent(subject) +
       '&body=' + encodeURIComponent(lines.join('\n'));

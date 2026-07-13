@@ -6,6 +6,12 @@
       "runtimeExecutable": "powershell",
       "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "site\\serve.ps1"],
       "port": 4173
+    },
+    {
+      "name": "arcanum",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:\\Users\\stein\\Desktop\\Cloude Code\\Dnd\\tools\\serve.js"],
+      "port": 4180
     }
   ]
 }

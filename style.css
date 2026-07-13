@@ -1,5 +1,5 @@
 /* =====================================================
-   Sendatzki + Rosenthal — Autoteile und Lacke
+   Sendatzki + Rosenthal, Autoteile und Lacke
    Marke: Navy #1D3E6E + Signalrot #FF1C28.
    Navy-Hero mit Lagerbild, Rot als einziger Akzent.
    Display: Newsreader · Body/UI: Inter Tight
@@ -25,7 +25,7 @@
 
   --warm-white: #f4efe6;
 
-  --font-display: "Newsreader", "Times New Roman", serif;
+  --font-display: "Space Grotesk", "Inter Tight", "Segoe UI", system-ui, sans-serif;
   --font-body: "Inter Tight", "Segoe UI", system-ui, sans-serif;
 
   --wrap: 1160px;
@@ -115,11 +115,7 @@ address { font-style: normal; }
 
 .main-nav a:hover { color: #fff; }
 
-.nav-rule {
-  width: 24px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.35);
-}
+.nav-rule { display: none; }
 
 .nav-toggle {
   display: none;
@@ -185,11 +181,11 @@ address { font-style: normal; }
 
 .hero-title {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2.05rem, 3.7vw, 3.5rem);
-  line-height: 1.12;
-  letter-spacing: -0.01em;
-  color: var(--warm-white);
+  font-weight: 600;
+  font-size: clamp(2.05rem, 3.7vw, 3.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fff;
   text-wrap: balance;
 }
 
@@ -210,17 +206,17 @@ address { font-style: normal; }
 }
 
 .btn-red {
-  background: var(--red);
-  color: #fff;
+  background: #fff;
+  color: var(--navy);
   text-decoration: none;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   padding: 13px 24px;
   border-radius: 999px;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.btn-red:hover { background: var(--red-hover); }
+.btn-red:hover { background: rgba(255, 255, 255, 0.86); }
 
 .btn-ghost {
   color: #fff;
@@ -364,10 +360,10 @@ address { font-style: normal; }
 .section-head h2,
 .section-lead {
   font-family: var(--font-display);
-  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.015em;
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
   max-width: 16em;
 }
 
@@ -519,6 +515,43 @@ a.section-side:hover { color: var(--red); }
   color: var(--red);
 }
 
+/* =============== SERVICE-KARTEN (Leistungen) =============== */
+
+.services { padding-bottom: 110px; }
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 28px 26px 30px;
+}
+
+.service-ic {
+  width: 40px;
+  height: 40px;
+  color: var(--red);
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  color: #fff;
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
 /* =============== KONTAKT-KARTE =============== */
 
 .contact { padding-block: 100px 130px; }
@@ -559,17 +592,17 @@ a.section-side:hover { color: var(--red); }
 }
 
 .btn-solid {
-  background: var(--red);
-  color: #fff;
+  background: #fff;
+  color: var(--navy);
   text-decoration: none;
   font-size: 14.5px;
-  font-weight: 500;
+  font-weight: 600;
   padding: 13px 24px;
   border-radius: 999px;
   transition: background 0.2s ease;
 }
 
-.btn-solid:hover { background: var(--red-hover); }
+.btn-solid:hover { background: rgba(255, 255, 255, 0.86); }
 
 .btn-quiet {
   font-size: 14.5px;
@@ -594,8 +627,9 @@ a.section-side:hover { color: var(--red); }
 .foot-cta {
   display: inline-block;
   font-family: var(--font-display);
-  font-size: 30px;
-  font-weight: 500;
+  font-size: 27px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   color: #fff;
   text-decoration: none;
   margin-bottom: 60px;
@@ -603,11 +637,28 @@ a.section-side:hover { color: var(--red); }
 
 .foot-cta:hover { color: var(--red); }
 
-.foot-cols {
+/* Footer: CTA links, drei Info-Spalten füllen die restliche Breite */
+.site-foot .wrap {
   display: grid;
-  grid-template-columns: repeat(3, minmax(180px, 240px));
-  gap: 36px;
-  margin-bottom: 72px;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  column-gap: 40px;
+  align-items: start;
+}
+
+.foot-cta {
+  grid-column: 1;
+  margin-bottom: 0;
+  align-self: start;
+  line-height: 1.15;
+}
+
+.foot-cols {
+  display: contents;
+}
+
+.foot-meta {
+  grid-column: 1 / -1;
+  margin-top: 76px;
 }
 
 .foot-col h3 {
@@ -642,14 +693,33 @@ a.section-side:hover { color: var(--red); }
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  position: relative;
+  padding-top: 38px;
+}
+
+/* Marken-Farbstreifen: Weiß → Blautöne → Rot */
+.foot-meta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    #f4efe6 0% 18%,
+    #6a83ac 18% 34%,
+    #2a4d82 34% 50%,
+    #12294a 50% 66%,
+    #ff3a45 66% 83%,
+    #ff1c28 83% 100%
+  );
 }
 
 .foot-logo {
-  width: 62px;
+  width: 60px;
   height: auto;
-  background: #fff;
-  padding: 7px 9px;
-  border-radius: 8px;
 }
 
 .foot-links {
@@ -710,10 +780,10 @@ a.section-side:hover { color: var(--red); }
 
 .page-title {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  line-height: 1.12;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   max-width: 16em;
   text-wrap: balance;
 }
@@ -728,9 +798,88 @@ a.section-side:hover { color: var(--red); }
 
 .page-body { padding-block: 72px 110px; }
 
+.page-body--tight { padding-bottom: 52px; }
+
+/* =============== RECHTSSEITEN (Impressum / Datenschutz) =============== */
+
+.legal {
+  max-width: 72ch;
+  font-size: 16px;
+  color: var(--ink);
+  line-height: 1.65;
+}
+
+.legal h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  margin: 44px 0 14px;
+}
+
+.legal h2:first-child { margin-top: 0; }
+
+.legal h3 {
+  font-size: 16.5px;
+  font-weight: 600;
+  margin: 26px 0 8px;
+}
+
+.legal p { margin-bottom: 14px; }
+
+.legal ul {
+  margin: 0 0 16px;
+  padding-left: 1.2em;
+}
+
+.legal li { margin-bottom: 6px; }
+
+.legal a {
+  color: var(--red);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal address {
+  font-style: normal;
+  margin-bottom: 14px;
+}
+
+/* Deutlich sichtbarer Platzhalter für noch einzutragende Angaben */
+.ph-mark {
+  background: #ffe2c2;
+  color: #7a0f16;
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-weight: 600;
+  white-space: normal;
+}
+
+/* Hinweis-Kasten mit Ausfüll-Erklärung */
+.legal-note {
+  border-left: 3px solid var(--red);
+  background: var(--gray-50);
+  padding: 15px 18px;
+  border-radius: 0 8px 8px 0;
+  margin: 8px 0 30px;
+  font-size: 14.5px;
+  color: var(--muted);
+}
+
+.legal-note strong { color: var(--ink); }
+
+.legal .hint {
+  display: block;
+  font-size: 13.5px;
+  color: var(--faint);
+  margin: -8px 0 16px;
+}
+
 /* =============== PARTNER-MARQUEE =============== */
 
-.partner-marquee { padding-bottom: 96px; }
+.partner-marquee { padding-block: 108px 100px; }
+
+.partner-marquee .marquee-track { animation-duration: 58s; }
 
 .marquee {
   overflow: hidden;
@@ -741,6 +890,7 @@ a.section-side:hover { color: var(--red); }
   display: flex;
   width: max-content;
   animation: marquee-scroll 38s linear infinite;
+  will-change: transform;
 }
 
 .marquee--reverse .marquee-track { animation-direction: reverse; }
@@ -789,7 +939,9 @@ a.section-side:hover { color: var(--red); }
 
 /* =============== BEWERTUNGEN =============== */
 
-.reviews { padding-bottom: 110px; }
+.reviews { padding-block: 108px 116px; }
+
+.reviews .section-head { padding-bottom: 40px; }
 
 .review-card {
   width: min(420px, 82vw);
@@ -797,7 +949,7 @@ a.section-side:hover { color: var(--red); }
   background: var(--gray-50);
   border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 22px 24px;
+  padding: 26px 28px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -879,6 +1031,7 @@ a.section-side:hover { color: var(--red); }
 
 .loc-card {
   background: var(--paper);
+  color: var(--ink);
   border: 1px solid var(--line);
   border-radius: 14px;
   overflow: hidden;
@@ -913,8 +1066,10 @@ a.section-side:hover { color: var(--red); }
 
 .loc-card h3 {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 25px;
+  font-weight: 600;
+  font-size: 23px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
   margin-bottom: 2px;
 }
 
@@ -989,7 +1144,7 @@ a.section-side:hover { color: var(--red); }
   gap: 8px;
   margin-top: 18px;
   align-self: flex-start;
-  background: var(--red);
+  background: var(--navy);
   color: #fff;
   text-decoration: none;
   font-size: 14px;
@@ -999,7 +1154,7 @@ a.section-side:hover { color: var(--red); }
   transition: background 0.2s ease;
 }
 
-.btn-maps:hover { background: var(--red-hover); }
+.btn-maps:hover { background: var(--navy-mid); }
 
 .btn-maps svg { width: 14px; height: 14px; }
 
@@ -1070,8 +1225,10 @@ a.section-side:hover { color: var(--red); }
 
 .prose .lead {
   font-family: var(--font-display);
-  font-size: 24px;
-  line-height: 1.45;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
 }
 
 .fact-list {
@@ -1181,16 +1338,17 @@ a.section-side:hover { color: var(--red); }
 }
 
 .btn-submit {
-  background: var(--red);
+  background: var(--navy);
   color: #fff;
   border: none;
-  font: 500 13.5px var(--font-body);
-  padding: 12px 26px;
+  font: 600 13.5px var(--font-body);
+  padding: 13px 28px;
   border-radius: 999px;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
-.btn-submit:hover { background: var(--red-hover); }
+.btn-submit:hover { background: var(--navy-mid); }
 
 .form-note { font-size: 12px; color: var(--faint); max-width: 34em; }
 
@@ -1248,7 +1406,15 @@ a.section-side:hover { color: var(--red); }
   /* .wrap-Breite im Scroller aufheben, damit die Karten frei laufen */
   .process-scroller .process-track { margin-inline: 0; }
 
-  .foot-cols { grid-template-columns: 1fr 1fr; }
+  /* Footer wieder gestapelt statt Vier-Spalten-Grid */
+  .site-foot .wrap { display: block; }
+  .foot-cta { margin-bottom: 44px; max-width: none; }
+  .foot-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 40px;
+  }
+  .foot-meta { margin-top: 60px; }
 }
 
 @media (max-width: 640px) {

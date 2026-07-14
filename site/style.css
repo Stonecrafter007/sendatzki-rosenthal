@@ -28,8 +28,8 @@
   --font-display: "Space Grotesk", "Inter Tight", "Segoe UI", system-ui, sans-serif;
   --font-body: "Inter Tight", "Segoe UI", system-ui, sans-serif;
 
-  --wrap: 1160px;
-  --pad: 24px;
+  --wrap: 1340px;
+  --pad: 32px;
   --radius: 12px;
 }
 
@@ -182,8 +182,8 @@ address { font-style: normal; }
 .hero-title {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(2.05rem, 3.7vw, 3.4rem);
-  line-height: 1.1;
+  font-size: clamp(2.05rem, 4.2vw, 4.1rem);
+  line-height: 1.08;
   letter-spacing: -0.02em;
   color: #fff;
   text-wrap: balance;

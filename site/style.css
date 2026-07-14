@@ -552,6 +552,8 @@ a.section-side:hover { color: var(--red); }
   line-height: 1.6;
 }
 
+.service-card .tags { margin-top: 16px; }
+
 /* =============== KONTAKT-KARTE =============== */
 
 .contact { padding-block: 100px 130px; }

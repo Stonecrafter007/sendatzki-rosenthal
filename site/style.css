@@ -766,6 +766,9 @@ a.section-side:hover { color: var(--red); }
 
 .nav-icon svg { width: 17px; height: 17px; }
 
+/* Facebook-Kreis wirkt kleiner als das Instagram-Quadrat, daher leicht hochskaliert */
+.nav-icon[aria-label="Facebook"] svg { transform: scale(1.12); }
+
 /* =============== UNTERSEITEN-KOPF =============== */
 
 .page-head {

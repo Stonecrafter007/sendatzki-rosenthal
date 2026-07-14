@@ -471,7 +471,7 @@ a.section-side:hover { color: var(--red); }
 
 /* =============== ABLAUF =============== */
 
-.process { padding-bottom: 110px; }
+.process { padding-block: 92px 110px; }
 
 .process-scroller {
   overflow-x: auto;
